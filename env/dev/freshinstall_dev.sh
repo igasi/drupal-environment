@@ -23,8 +23,14 @@ sleep 10s
 echo "Clearing cache.."
 docker-compose exec www vendor/bin/drupal --root=/var/www/html/web cr all
 
-echo "Importing latest config from dev env..."
-docker-compose exec www vendor/bin/drupal --root=/var/www/html/web project:config:import --environment=dev
+
+shopt -s nullglob dotglob
+# To include hidden files 
+files=(./config/dev/*.yml)
+if [ ${#files[@]} -gt 0 ]; then
+  echo "Importing latest config from dev env..."
+  docker-compose exec www vendor/bin/drupal --root=/var/www/html/web project:config:import --environment=dev;
+fi
 
 echo "Switching to verbose mode..."
 docker-compose stop; docker-compose up
