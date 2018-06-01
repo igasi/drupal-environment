@@ -1,0 +1,17 @@
+# How to use
+# project:deploy --to=dev
+command:
+  name: 'project:deploy'
+  description: 'Deploy to environment (dev|live) with latest changes on master branch.'
+vars:
+  toEnv:
+    - dev
+    - live
+commands:
+  - command: exec
+    arguments:
+        bin: echo "Deploying on =>" {{toEnv}} " \n Wroking on =>" $(pwd)
+  - command: 'project:config:import'
+    options:
+        environment: "{{toEnv}}"
+        uri: 'http://default'

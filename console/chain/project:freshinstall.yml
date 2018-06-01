@@ -1,0 +1,28 @@
+# How to use
+# project:freshinstall
+command:
+  name: 'project:freshinstall'
+  description: 'Install a fresh project instance.'
+
+commands:
+  - command: exec
+    arguments:
+      bin: cp ./sites/default/default.settings.php ./sites/default/settings.php
+  - command: 'site:install'
+    options:
+      langcode: es
+      db-type: mysql
+      db-host: db
+      db-name: project_drupal
+      db-user: admin
+      db-pass: admin
+      db-port: '3306'
+      site-name: 'project.com'
+      site-mail: soporte@project.com
+      account-name: root
+      account-mail: soporte@project.com
+      account-pass: root
+      uri: 'http://default'
+    arguments:
+      profile: standard
+  - command: project:files:set:ownership

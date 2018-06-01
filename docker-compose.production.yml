@@ -1,0 +1,38 @@
+##
+# Operational services to run the application in your local environment.
+##
+version: '2.1'
+
+services:
+  # Container to run Apache/PHP
+  www_dev_project:
+    build: env/prod/php
+    hostname: project
+    network_mode: "bridge"
+    domainname: project.com
+    container_name: prod_project_www
+    environment:
+      VIRTUAL_HOST: www.project.com
+    labels:
+      com.dnsdock.name: "www"
+      com.dnsdock.image: "project"
+    links:
+      - db
+    volumes:
+      - .:/var/www/html/
+
+  # Container to run our database
+  db:
+    image: phase2/mariadb
+    network_mode: "bridge"
+    container_name: project_db
+    environment:
+      MYSQL_DATABASE: project_drupal
+    labels:
+      # The dnsdock labels make this container referenceable by db.project.vm
+      # It is recommended that your com.dnsdock.name match your container name
+      com.dnsdock.name: "db"
+      com.dnsdock.image: "project"
+    volumes:
+      - /data/project/mysql:/var/lib/mysql
+

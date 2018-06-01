@@ -1,0 +1,9 @@
+# How to use
+# project:debug:errors
+command:
+  name: 'project:debug:errors'
+  description: 'Views the recent httpd log.'
+commands:
+  - command: exec
+    arguments:
+        bin: tail -f /var/log/apache2/project.dev.log

@@ -1,0 +1,9 @@
+# How to use
+# project:config:set:ownership
+command:
+  name: 'project:config:set:ownership'
+  description: 'Set the ownership to config folder to sync.'
+commands:
+  - command: exec
+    arguments:
+        bin: chown 1000:1000 -R ./../config

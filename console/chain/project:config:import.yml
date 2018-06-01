@@ -1,0 +1,34 @@
+# How to use
+# project:config:import --environment=dev
+command:
+  name: 'project:config:import'
+  description: 'Import all config from {dev|live} environment.'
+vars:
+  environment:
+    - dev
+    - live
+commands:
+  - command: 'config:import'
+    options:
+        directory: ./../config/{{environment}}/
+        uri: 'http://default'
+        skip-uuid: true
+  - command: 'cache:rebuild'
+    options:
+        uri: 'http://default'
+    arguments:
+        cache: all
+  - command: 'update:entities'
+    options:
+        uri: 'http://default'
+  - command: 'router:rebuild'
+    options:
+        uri: 'http://default'
+  - command: 'node:access:rebuild'
+    options:
+        uri: 'http://default'
+  - command: project:config:set:ownership
+  - command: exec
+    arguments:
+        bin: git status
+

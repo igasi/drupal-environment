@@ -1,0 +1,15 @@
+# How to use
+# project:files:set:ownership
+command:
+  name: 'project:files:set:ownership'
+  description: 'Set the ownership to files folder.'
+commands:
+  - command: exec
+    arguments:
+        bin: chown www-data:www-data -R ./sites/default
+  - command: exec
+    arguments:
+        bin: chmod 400 ./sites/default/settings.php
+  - command: exec
+    arguments:
+        bin: ls -la ./sites/default

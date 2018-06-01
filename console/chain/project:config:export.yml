@@ -1,0 +1,26 @@
+# How to use
+# project:config:export --environment=dev
+command:
+  name: 'project:config:export'
+  description: 'Export all config from {dev|live} environment.'
+vars:
+  environment:
+    - dev
+    - live
+commands:
+  - command: 'config:export'
+    options:
+        directory: ./../config/{{environment}}/
+        uri: 'http://default'
+        remove-uuid: true
+        remove-config-hash: true
+  - command: 'cache:rebuild'
+    options:
+        uri: 'http://default'
+    arguments:
+        cache: all
+  - command: project:config:set:ownership
+  - command: exec
+    arguments:
+        bin: git status
+

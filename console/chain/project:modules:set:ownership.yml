@@ -1,0 +1,9 @@
+# How to use
+# project:modules:set:ownership
+command:
+  name: 'project:modules:set:ownership'
+  description: 'Set the ownership to modules folder.'
+commands:
+  - command: exec
+    arguments:
+      bin: chown 1000:1000 -R ./web/modules ./web/themes ./web/profiles ./web/profiles
