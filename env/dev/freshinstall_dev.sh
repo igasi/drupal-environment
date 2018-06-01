@@ -25,7 +25,7 @@ docker-compose exec www vendor/bin/drupal --root=/var/www/html/web cr all
 
 
 shopt -s nullglob dotglob
-# To include hidden files 
+# Check if exist configuration files
 files=(./config/dev/*.yml)
 if [ ${#files[@]} -gt 0 ]; then
   echo "Importing latest config from dev env..."
