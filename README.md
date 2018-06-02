@@ -53,7 +53,7 @@ To execute any of this commands:
 *example:
     `./../vendor/bin/drupal project:config:export`*
      
-###Command Script definition
+##Command Script definition
 
 `project:config:export`:
 This command export the active configurations in the environment defined.
