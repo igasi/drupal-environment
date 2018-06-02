@@ -1,9 +1,9 @@
 Project template using composer for Drupal starter kid, managing your site
 dependencies with [Composer](https://getcomposer.org/).
 
-## Intallation
+## Initialization
 
-Create a project folder and inside it clone this repository:
+Go to the project folder and clone the drupal environment repository:
 ```
  git clone git@gitlab.com:drupaltitlan/drupal-environment.git
 ```
@@ -17,6 +17,11 @@ Execute fresh installation scrip:
 ```
 env/dev/freshinstall_dev.sh
 ```
+After the execution of fresh install command your drupal instance must be ready,
+to verify go to:
+`http://www.project.vm/`
+
+## Project personalization
 
 
 With `composer require ...` you can download new dependencies to your 
