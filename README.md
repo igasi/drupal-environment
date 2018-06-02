@@ -35,10 +35,10 @@ composer require drupal/devel:~1.0
 The project consider two environments:
 
 **dev** *(env/dev)*:
-This directory will contain dev exported configurations.
+This directory will contain the configuration files and scripts for development
 
 **prod** *(env/prod)*
-This directory will contain all configurations ready for production.
+This directory will contain the configuration files and scripts for deploy
 
 ## Configuration scripts available 
 The directory **(drupal-environment)/console/chain** contains a group of yml files with development scripts defined inside.
@@ -48,17 +48,57 @@ To execute any of this commands:
 
 1. Login container: `docker-compose exec www bash`
 2. Go to `/web` directory
-3. Run the command preceded by: `vendor/bin/drupal `
+3. Run the command preceded by: `./../vendor/bin/drupal `
 
 *example:
     `./../vendor/bin/drupal project:config:export`*
      
-###Scripts definition
+###Command Script definition
+
 `project:config:export`:
-This command export the configurations.
-Script parameters available are for dev or prod environment.
+This command export the active configurations in the environment defined.
+Script parameters available are for dev or prod environment, the environment ins defined at the end of the command.
 
 *example:
-    ../vendor/bin/drupal project:config:import --environment=dev or live*
+    ../vendor/bin/drupal project:config:import --environment=dev or prod*
+
+`project:config:import`:
+This command import the active configurations in the environment defined.
+Script parameters available are for dev or prod environment, the environment ins defined at the end of the command.
+
+*example:
+    ../vendor/bin/drupal project:config:import --environment=prod or dev*
+
+`project:config:set:ownership`:
+This command set owner 1000 to **config** directory.
+
+*example:
+    ../vendor/bin/drupal project:config:set:ownership*
+
+`project:debug:errors`:
+This command show httpd log and errors.
+
+*example:
+    ../vendor/bin/drupal project:debug:errors*
+    
+`project:deploy`:
+This command Deploy to environment (dev|live) with latest changes on master branch.
+Script parameters available are for dev or prod environment, the environment ins defined at the end of the command.
+
+*example:
+    ../vendor/bin/drupal project:deploy --to=dev*
+    
+`project:file:set:ownership`:
+This command set the ownership to files folder.
+
+*example:
+    ../vendor/bin/drupal project:file:set:ownership*
+    
+`project:modules:set:ownership`:
+This command set the ownership to modules folder.
+
+*example:
+    ../vendor/bin/drupal project:modules:set:ownership*
+    
 
 
