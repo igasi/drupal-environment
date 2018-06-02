@@ -6,7 +6,7 @@ command:
 vars:
   toEnv:
     - dev
-    - live
+    - prod
 commands:
   - command: exec
     arguments:
