@@ -1,5 +1,22 @@
+## Project structure
+drupal-environment *(root)*
+  |── config                  # Drupal configuration files exported by environment
+  |   |── dev                   # Config files for dev environment
+  |   └── prod                  # Config files for production 
+  ├── console                 # Scripts executables via drupal console
+  |   |── cache                 #
+  |   |── chain                 # Custom chain scripts for development 
+  |   └──  sites                 #
+  ├── drush                   # Commands, configuration and site aliases for Drush.
+  ├── env                     # Scripts and files related by environment
+  |   |── dev                   # 
+  |   └── prod                  #
+  ├── scripts                 # Automated tests (alternatively `spec` or `tests`)
+  ├── web                     # Drupal files directory
+
 Project template using composer for Drupal starter kid, managing your site
 dependencies with [Composer](https://getcomposer.org/).
+
 
 ## Initialization
 
@@ -22,7 +39,6 @@ to verify go to:
 `http://www.project.vm/`
 
 ## Project personalization
-
 
 With `composer require ...` you can download new dependencies to your 
 installation.
@@ -105,5 +121,15 @@ This command set the ownership to modules folder.
 *example:
     ../vendor/bin/drupal project:modules:set:ownership*
     
+## WORKFLOW
+   
+Development work will take place (mostly) in **WEB** directory:
+ 
+ web *(drupal files)*   
+  ├── modules                   # Directory for contrib and custom modules 
+  ├── profiles                  # Custom install configurations
+  ├── sites                     # Here comes anything which is not part of the Drupal core.
+  ├── themes                    # Custom or contrib themes
+
 
 
