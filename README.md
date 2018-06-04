@@ -2,15 +2,15 @@
 drupal-environment *(root)*
 ```
   |── config                  # Drupal configuration files exported by environment  
-  ├   ├── dev                       # Config files for dev environment  
-  ├   └── prod                     # Config files for production  
+  ├   ├── dev                     # Config files for dev environment  
+  ├   └── prod                    # Config files for production  
   ├── console                 # Scripts executables via drupal console  
   ├   ├── cache                   #  
-  ├   ├── chain                    # Custom chain scripts for development   
-  ├   └──  sites                    #  
+  ├   ├── chain                   # Custom chain scripts for development   
+  ├   └──  sites                  #  
   ├── drush                   # Commands, configuration and site aliases for Drush  
-  ├── env                      # Scripts and files related by environment  
-  ├   ├── dev                      #   
+  ├── env                     # Scripts and files related by environment  
+  ├   ├── dev                     #   
   ├   └── prod                    #  
   ├── scripts                 # Automated tests (alternatively `spec` or `tests`)  
   └── web                     # Drupal files directory  
@@ -129,8 +129,8 @@ Development work will take place (mostly) in **WEB** directory:
 ``` 
  web *(drupal files)*   
   ├── modules                   # Directory for contrib and custom modules   
-  ├── profiles                     # Custom install configurations  
-  ├── sites                          # Here comes anything which is not part of the Drupal core  
+  ├── profiles                  # Custom install configurations  
+  ├── sites                     # Here comes anything which is not part of the Drupal core  
   ├── themes                    # Custom or contrib themes  
 ```
 
