@@ -126,8 +126,9 @@ This command set the ownership to modules folder.
 ## WORKFLOW
    
 Development work will take place (mostly) in **WEB** directory:
-``` 
- web *(drupal files)*   
+
+web *(drupal files)*
+```  
   ├── modules                   # Directory for contrib and custom modules   
   ├── profiles                  # Custom install configurations  
   ├── sites                     # Here comes anything which is not part of the Drupal core  
