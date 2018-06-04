@@ -2,18 +2,18 @@
 drupal-environment *(root)*
 
   |── config                  # Drupal configuration files exported by environment  
-  |   |── dev                   # Config files for dev environment  
-  |   └── prod                  # Config files for production  
+  ├   ├── dev                   # Config files for dev environment  
+  ├   └── prod                  # Config files for production  
   ├── console                 # Scripts executables via drupal console  
-  |   |── cache                 #  
-  |   |── chain                 # Custom chain scripts for development   
-  |   └──  sites                 #  
+  ├   ├── cache                 #  
+  ├   ├── chain                 # Custom chain scripts for development   
+  ├   └──  sites                 #  
   ├── drush                   # Commands, configuration and site aliases for Drush  
   ├── env                     # Scripts and files related by environment  
-  |   |── dev                   #   
-  |   └── prod                  #  
+  ├   ├── dev                   #   
+  ├   └── prod                  #  
   ├── scripts                 # Automated tests (alternatively `spec` or `tests`)  
-  ├── web                     # Drupal files directory  
+  └── web                     # Drupal files directory  
 
 Project template using composer for Drupal starter kid, managing your site
 dependencies with [Composer](https://getcomposer.org/).
