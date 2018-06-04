@@ -1,18 +1,19 @@
 ## Project structure
 drupal-environment *(root)*
-  |── config                  # Drupal configuration files exported by environment
-  |   |── dev                   # Config files for dev environment
-  |   └── prod                  # Config files for production 
-  ├── console                 # Scripts executables via drupal console
-  |   |── cache                 #
-  |   |── chain                 # Custom chain scripts for development 
-  |   └──  sites                 #
-  ├── drush                   # Commands, configuration and site aliases for Drush.
-  ├── env                     # Scripts and files related by environment
-  |   |── dev                   # 
-  |   └── prod                  #
-  ├── scripts                 # Automated tests (alternatively `spec` or `tests`)
-  ├── web                     # Drupal files directory
+
+  |── config                  # Drupal configuration files exported by environment  
+  |   |── dev                   # Config files for dev environment  
+  |   └── prod                  # Config files for production  
+  ├── console                 # Scripts executables via drupal console  
+  |   |── cache                 #  
+  |   |── chain                 # Custom chain scripts for development   
+  |   └──  sites                 #  
+  ├── drush                   # Commands, configuration and site aliases for Drush  
+  ├── env                     # Scripts and files related by environment  
+  |   |── dev                   #   
+  |   └── prod                  #  
+  ├── scripts                 # Automated tests (alternatively `spec` or `tests`)  
+  ├── web                     # Drupal files directory  
 
 Project template using composer for Drupal starter kid, managing your site
 dependencies with [Composer](https://getcomposer.org/).
@@ -48,8 +49,8 @@ cd some-dir
 composer require drupal/devel:~1.0
 ```
 ##Installation scripts available
-**init.sh** *(env/dev/init.sh)* = this script configure and enables dnsdock container.
-**start_dev.sh** *(env/dev/start_dev.sh.sh)* = this commands build and start the containers.
+**init.sh** *(env/dev/init.sh)* = this script configure and enables dnsdock container.  
+**start_dev.sh** *(env/dev/start_dev.sh.sh)* = this commands build and start the containers.  
 **freshinstall_dev.sh** *(env/dev/freshinstall_dev.sh)* = this commands stop and delete containers, data base, settings files and re-create containers and required files.   
 
 ## Project environment definition:
@@ -63,8 +64,8 @@ This directory will contain the configuration files and scripts for deploy
 
 ## Configuration scripts available 
 The directory **(drupal-environment)/console/chain** contains a group of yml files with development scripts defined inside.
-This scripts help in the development activities like set permissions, export/import configurations or deploy.
 
+This scripts help in the development activities like set permissions, export/import configurations or deploy.  
 To execute any of this commands:
 
 1. Login container: `docker-compose exec www bash`
@@ -126,10 +127,10 @@ This command set the ownership to modules folder.
 Development work will take place (mostly) in **WEB** directory:
  
  web *(drupal files)*   
-  ├── modules                   # Directory for contrib and custom modules 
-  ├── profiles                  # Custom install configurations
-  ├── sites                     # Here comes anything which is not part of the Drupal core.
-  ├── themes                    # Custom or contrib themes
+  ├── modules                   # Directory for contrib and custom modules   
+  ├── profiles                  # Custom install configurations  
+  ├── sites                     # Here comes anything which is not part of the Drupal core  
+  ├── themes                    # Custom or contrib themes  
 
 
 
