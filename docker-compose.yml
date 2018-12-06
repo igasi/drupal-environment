@@ -17,7 +17,7 @@ services:
       DNSDOCK_NAME: www
       DNSDOCK_IMAGE: ${PROJECT_NAME}
       XDEBUG_CONFIG: ${XDEBUG_CONFIG}
-      VIRTUAL_HOST: ${VIRTUAL_HOST}
+      VIRTUAL_HOST: "www.${PROJECT_NAME}.vm"
     links:
       - db
     volumes:

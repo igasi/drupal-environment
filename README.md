@@ -30,6 +30,7 @@ Install dependencies:
 ```
 cd drupal-environment
 mkdir database
+cp defaults.env .env
 ```
 
 Execute fresh installation scrip:
