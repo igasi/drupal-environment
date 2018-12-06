@@ -30,7 +30,6 @@ Install dependencies:
 ```
 cd drupal-environment
 mkdir database
-composer install
 ```
 
 Execute fresh installation scrip:

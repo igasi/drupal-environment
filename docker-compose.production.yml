@@ -1,21 +1,23 @@
 ##
 # Operational services to run the application in your local environment.
 ##
-version: '2.1'
+version: '3.1'
 
 services:
   # Container to run Apache/PHP
-  www_dev_project:
-    build: env/prod/php
-    hostname: project
-    network_mode: "bridge"
-    domainname: project.com
-    container_name: prod_project_www
-    environment:
-      VIRTUAL_HOST: www.project.com
-    labels:
-      com.dnsdock.name: "www"
-      com.dnsdock.image: "project"
+  www_prod:
+      env_file:
+        - .env
+      build: env/dev/php
+      hostname: "${PROJECT_NAME}"
+      network_mode: "bridge"
+      domainname: "${PROJECT_NAME}.com"
+      container_name: "prod_${PROJECT_NAME}_www"
+      environment:
+        DNSDOCK_NAME: www
+        DNSDOCK_IMAGE: ${PROJECT_NAME}
+        XDEBUG_CONFIG: ${XDEBUG_CONFIG}
+        VIRTUAL_HOST: "www.${PROJECT_NAME}.com"
     links:
       - db
     volumes:
@@ -23,16 +25,19 @@ services:
 
   # Container to run our database
   db:
-    image: phase2/mariadb
+    env_file:
+      - .env
+    image: mariadb:$MARIADB_TAG
+    restart: always
     network_mode: "bridge"
-    container_name: project_db
+    container_name: "prod_${PROJECT_NAME}_db"
     environment:
-      MYSQL_DATABASE: project_drupal
-    labels:
-      # The dnsdock labels make this container referenceable by db.project.vm
-      # It is recommended that your com.dnsdock.name match your container name
-      com.dnsdock.name: "db"
-      com.dnsdock.image: "project"
+      MYSQL_ROOT_PASSWORD: ${DB_PASS_ROOT}
+      MYSQL_DATABASE: ${DB_NAME}
+      MYSQL_USER: ${DB_USER}
+      MYSQL_PASSWORD: ${DB_PASS}
+      DNSDOCK_NAME: db
+      DNSDOCK_IMAGE: ${PROJECT_NAME}
     volumes:
-      - /data/project/mysql:/var/lib/mysql
+      - ./database:/var/lib/mysql
 
