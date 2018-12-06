@@ -29,6 +29,7 @@ Go to the project folder and clone the drupal environment repository:
 Install dependencies:
 ```
 cd drupal-environment
+mkdir database
 composer install
 ```
 

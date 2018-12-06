@@ -1,54 +1,42 @@
 ##
 # Operational services to run the application in your local environment.
 ##
-version: '2.1'
+version: '3.1'
 
 services:
   # Container to run Apache/PHP
   www:
+    env_file:
+      - .env
     build: env/dev/php
-    hostname: project
+    hostname: "${PROJECT_NAME}"
     network_mode: "bridge"
-    domainname: project.dev
-    container_name: project_www
+    domainname: "${PROJECT_NAME}.vm"
+    container_name: "${PROJECT_NAME}_www"
     environment:
       DNSDOCK_NAME: www
-      DNSDOCK_IMAGE: project
-      XDEBUG_CONFIG: "remote_host=172.17.0.1"
-      VIRTUAL_HOST: www.project.vm
-    labels:
-      # The dnsdock labels make this container referenceable by www.project.vm
-      # It is recommended that your com.dnsdock.name match your container name
-      com.dnsdock.name: "www"
-      com.dnsdock.image: "project"
-    # Links become entries in /etc/hosts We can refer to the
-    # database host as db instead of db.project.vm or IP address
+      DNSDOCK_IMAGE: ${PROJECT_NAME}
+      XDEBUG_CONFIG: ${XDEBUG_CONFIG}
+      VIRTUAL_HOST: ${VIRTUAL_HOST}
     links:
       - db
-    # These src:dest pairs get mapped into the container at the
-    # dest path and override what was built into the image. Both
-    # a directory and an individual file can be overridden.
-    #
-    # Relative src paths and absolute ones pointing inside your home
-    # directory will pull in contents from your host machine.
-    #
-    # Paths using /data are persistent and shared within the docker
-    # machine so they should be namespaced (the value of
-    # com.dnsdock.image) was used in this case to create a base of /data/project
     volumes:
       - .:/var/www/html/
 
   # Container to run our database
   db:
-    image: phase2/mariadb
+    env_file:
+      - .env
+    image: mariadb:$MARIADB_TAG
+    restart: always
     network_mode: "bridge"
     container_name: project_db
     environment:
-      MYSQL_DATABASE: project_drupal
-    labels:
-      # The dnsdock labels make this container referenceable by db.project.vm
-      # It is recommended that your com.dnsdock.name match your container name
-      com.dnsdock.name: "db"
-      com.dnsdock.image: "project"
+      MYSQL_ROOT_PASSWORD: ${DB_PASS_ROOT}
+      MYSQL_DATABASE: ${DB_NAME}
+      MYSQL_USER: ${DB_USER}
+      MYSQL_PASSWORD: ${DB_PASS}
+      DNSDOCK_NAME: db
+      DNSDOCK_IMAGE: ${PROJECT_NAME}
     volumes:
-      - /data/project/mysql:/var/lib/mysql
+      - ./database:/var/lib/mysql

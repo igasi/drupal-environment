@@ -7,22 +7,22 @@ command:
 commands:
   - command: exec
     arguments:
-      bin: cp ./sites/default/default.settings.php ./sites/default/settings.php
+      bin: rm ./sites/default/settings.php; cp ./sites/default/default.settings.php ./sites/default/settings.php
   - command: 'site:install'
     options:
-      langcode: es
-      db-type: mysql
-      db-host: db
-      db-name: project_drupal
-      db-user: admin
-      db-pass: admin
-      db-port: '3306'
-      site-name: 'project.com'
-      site-mail: soporte@project.com
-      account-name: root
-      account-mail: soporte@project.com
-      account-pass: root
-      uri: 'http://default'
+      langcode: '{{ env("DRUPAL_LANGCODE") }}'
+      db-type: '{{ env("DB_TYPE") }}'
+      db-host: '{{ env("DB_HOST") }}'
+      db-user: '{{ env("DB_USER") }}'
+      db-pass: '{{ env("DB_PASS") }}'
+      db-name: '{{ env("DB_NAME") }}'
+      db-port: '{{ env("DB_PORT") }}'
+      site-name: '{{ env("DRUPAL_SITE_NAME") }}'
+      site-mail: '{{ env("DRUPAL_SITE_MAIL") }}'
+      account-name: '{{ env("DRUPAL_ACCOUNT_NAME") }}'
+      account-mail: '{{ env("DRUPAL_ACCOUNT_MAIL") }}'
+      account-pass: '{{ env("DRUPAL_ACCOUNT_PASS") }}'
+      force: true
     arguments:
-      profile: standard
+      profile: '{{ env("DRUPAL_PROFILE") }}'
   - command: project:files:set:ownership
