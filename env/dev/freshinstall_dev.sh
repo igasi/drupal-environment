@@ -3,7 +3,7 @@
 export $(egrep -v '^#' .env | xargs)
 
 echo " ===> Stopping containers..."
-docker-compose stop
+docker-compose down
 
 echo " ===> Deleting DB project container..."
 docker rm ${PROJECT_NAME}_db
@@ -37,7 +37,7 @@ shopt -s nullglob dotglob
 files=(./config/dev/*.yml)
 if [ ${#files[@]} -gt 0 ]; then
   echo " ===> Importing latest config from dev env..."
-  docker-compose exec www vendor/bin/drupal --root=/var/www/html/web project:config:import --environment=dev;
+  docker-compose exec www vendor/bin/drupal --root=/var/www/html/web project:config:import --environment=${ENVIRONMENT};
 fi
 
 echo " ===> Switching to verbose mode..."

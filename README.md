@@ -33,13 +33,15 @@ mkdir database
 cp defaults.env .env
 ```
 
+Edit .env file to set your own project information.
+
 Execute fresh installation scrip:
 ```
 env/dev/freshinstall_dev.sh
 ```
 After the execution of fresh install command your drupal instance must be ready,
 to verify go to:
-`http://www.project.vm/`
+`http://www.PROJECT_NAME.vm/`
 
 ## Project personalization
 
