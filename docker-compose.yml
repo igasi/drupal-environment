@@ -30,7 +30,7 @@ services:
     image: mariadb:$MARIADB_TAG
     restart: always
     network_mode: "bridge"
-    container_name: "prod_${PROJECT_NAME}_db"
+    container_name: "${PROJECT_NAME}_db"
     environment:
       MYSQL_ROOT_PASSWORD: ${DB_PASS_ROOT}
       MYSQL_DATABASE: ${DB_NAME}
