@@ -14,9 +14,6 @@ services:
       domainname: "${PROJECT_NAME}.com"
       container_name: "prod_${PROJECT_NAME}_www"
       environment:
-        DNSDOCK_NAME: www
-        DNSDOCK_IMAGE: ${PROJECT_NAME}
-        XDEBUG_CONFIG: ${XDEBUG_CONFIG}
         VIRTUAL_HOST: "www.${PROJECT_NAME}.com"
     links:
       - db
@@ -36,8 +33,6 @@ services:
       MYSQL_DATABASE: ${DB_NAME}
       MYSQL_USER: ${DB_USER}
       MYSQL_PASSWORD: ${DB_PASS}
-      DNSDOCK_NAME: db
-      DNSDOCK_IMAGE: ${PROJECT_NAME}
     volumes:
       - ./database:/var/lib/mysql
 
