@@ -5,12 +5,12 @@ RUN apt-get update && apt-get install -y \
         libfreetype6-dev \
         libjpeg62-turbo-dev \
         libmcrypt-dev \
-        libpng12-dev \
+        libpng-dev \
         libbz2-dev \
         libicu-dev \
         curl \
-	    dialog \
-	    wget \
+	      dialog \
+	      wget \
         git \
         vim \
         tree \
