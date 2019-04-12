@@ -11,13 +11,10 @@ services:
     build: env/dev/php
     hostname: "${PROJECT_NAME}"
     network_mode: "bridge"
-    domainname: "${PROJECT_NAME}.vm"
+    domainname: "${PROJECT_NAME}.${DOMAIN}"
     container_name: "${PROJECT_NAME}_www"
     environment:
-      DNSDOCK_NAME: www
-      DNSDOCK_IMAGE: ${PROJECT_NAME}
-      XDEBUG_CONFIG: ${XDEBUG_CONFIG}
-      VIRTUAL_HOST: "www.${PROJECT_NAME}.vm"
+      VIRTUAL_HOST: "${PROJECT_NAME}.${DOMAIN}"
     links:
       - db
     volumes:

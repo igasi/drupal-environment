@@ -22,26 +22,38 @@ dependencies with [Composer](https://getcomposer.org/).
 
 ## Initialization
 
-Go to the project folder and clone the drupal environment repository:
+1. Go to the project folder and clone the drupal environment repository:
 ```
  git clone git@gitlab.com:drupaltitlan/drupal-environment.git
 ```
-Install dependencies:
+
+1.1 If you are running for the first time the environment create the reverse proxy for load the dns based on /etc/hosts
+```
+env/init.sh
+```
+
+1.2 Per site that you want to run in dev/local instances is needed to add that name on /etc/hosts.
+Make sure the name is the same that PROJECT_NAME and DOMAIN vars in .env file.
+```
+sudo echo 127.0.0.1       PROJECT_NAME.DOMAIN >> /etc/hosts 
+```
+
+2. Install dependencies:
 ```
 cd drupal-environment
 mkdir database
 cp defaults.env .env
 ```
 
-Edit .env file to set your own project information.
+3. Edit .env file to set your own project information.
 
-Execute fresh installation scrip:
+4. Execute fresh installation scrip:
 ```
 env/dev/freshinstall_dev.sh
 ```
 After the execution of fresh install command your drupal instance must be ready,
 to verify go to:
-`http://www.PROJECT_NAME.vm/`
+`http://www.PROJECT_NAME.DOMAIN/`
 
 ## Project personalization
 

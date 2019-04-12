@@ -2,17 +2,15 @@
 
 export $(egrep -v '^#' .env | xargs)
 
-echo " ===> Stopping containers..."
+echo " ===> Stop and delete containers..."
 docker-compose down
 
-echo " ===> Deleting DB project container..."
-docker rm ${PROJECT_NAME}_db
-
 echo " ===> Deleting drupal settings file..."
-sudo rm -rf ./web/sites/default/settings.php
+chmod -R 777 web/sites/default
+rm -rf ./web/sites/default/settings.php
 
 echo " ===> Delete db persisted in DB_LOCAL_PATH .env file ..."
-sudo rm -rf ./${DB_LOCAL_PATH}
+rm -rf ./${DB_LOCAL_PATH}
 echo " ===> Recreate directory in db persistence using DB_LOCAL_PATH .env file ..."
 mkdir ./${DB_LOCAL_PATH}
 
@@ -40,5 +38,8 @@ if [ ${#files[@]} -gt 0 ]; then
   docker-compose exec www vendor/bin/drupal --root=/var/www/html/web project:config:import --environment=${ENVIRONMENT};
 fi
 
-echo " ===> Switching to verbose mode..."
-docker-compose stop; docker-compose up
+# Site ready with local domain
+echo Your local is ready, visit: http://${PROJECT_NAME}.${DOMAIN}
+
+#echo " ===> Switching to verbose mode..."
+#docker-compose stop; docker-compose up

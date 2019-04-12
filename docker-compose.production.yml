@@ -6,15 +6,15 @@ version: '3.1'
 services:
   # Container to run Apache/PHP
   www_prod:
-      env_file:
-        - .env
-      build: env/dev/php
-      hostname: "${PROJECT_NAME}"
-      network_mode: "bridge"
-      domainname: "${PROJECT_NAME}.com"
-      container_name: "prod_${PROJECT_NAME}_www"
-      environment:
-        VIRTUAL_HOST: "www.${PROJECT_NAME}.com"
+    env_file:
+      - .env
+    build: env/dev/php
+    hostname: "${PROJECT_NAME}"
+    network_mode: "bridge"
+    domainname: "${PROJECT_NAME}.com"
+    container_name: "prod_${PROJECT_NAME}_www"
+    environment:
+      VIRTUAL_HOST: "www.${PROJECT_NAME}.com"
     links:
       - db
     volumes:
